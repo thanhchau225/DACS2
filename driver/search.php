@@ -10,11 +10,11 @@ if (strlen($_SESSION['vamsid']==0)) {
 
   ?>
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   
-    <title>Garbage Management System: Search Request</title>
+    <title>Hệ Thống Quản Lý Rác: Tìm Kiếm Đơn Hàng</title>
 
     <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
@@ -31,28 +31,26 @@ if (strlen($_SESSION['vamsid']==0)) {
     <div class="main_content" id="main-content">
        <?php include_once('includes/sidebar.php');?>
 
-      
-
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">Search Order</a>
+                <a class="navbar-brand" href="javascript:void(0);">Tìm Kiếm Đơn Hàng</a>
             </nav>
             <div class="container-fluid">            
                 <div class="row clearfix">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Search by Bin ID. </h2>
+                                <h2>Tìm Kiếm Theo ID Thùng Rác</h2>
                             </div>
                             
                             <div class="body">
                                 <form id="basic-form" method="post">
                                 <div class="form-group">
                                    
-                                    <input id="searchdata" type="text" name="searchdata" required="true" class="form-control" placeholder="Enter Bin ID"></div>
-                                
+                                    <input id="searchdata" type="text" name="searchdata" required="true" class="form-control" placeholder="Nhập ID Thùng Rác"></div>
+                                 
                                 <br>
-                                <button type="submit" class="btn btn-primary" name="search" id="submit">Search</button>
+                                <button type="submit" class="btn btn-primary" name="search" id="submit">Tìm Kiếm</button>
                             </form>
                                 <div class="table-responsive">
                                      <?php
@@ -61,28 +59,28 @@ if(isset($_POST['search']))
 
 $sdata=$_POST['searchdata'];
   ?>
-  <h4 align="center">Result against "<?php echo $sdata;?>" keyword </h4>
+  <h4 align="center">Kết quả tìm kiếm với từ khóa "<?php echo $sdata;?>" </h4>
                                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                         <thead>
                                             <tr>
-                                               <th>S.No</th>
-                                        <th>Bin ID</th>
-                                        <th>Area</th>
-                                        <th>Locality</th>
-                                        <th>Assign Date</th>
-                                    <th>Status</th>
-                                        <th>Action</th>
+                                               <th>STT</th>
+                                        <th>ID Thùng Rác</th>
+                                        <th>Khu Vực</th>
+                                        <th>Địa Phương</th>
+                                        <th>Ngày Giao</th>
+                                    <th>Tình Trạng</th>
+                                        <th>Hành Động</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                               <th>S.No</th>
-                                        <th>Bin ID</th>
-                                        <th>Area</th>
-                                        <th>Locality</th>
-                                        <th>Assign Date</th>
-                                    <th>Status</th>
-                                        <th>Action</th>
+                                               <th>STT</th>
+                                        <th>ID Thùng Rác</th>
+                                        <th>Khu Vực</th>
+                                        <th>Địa Phương</th>
+                                        <th>Ngày Giao</th>
+                                    <th>Tình Trạng</th>
+                                        <th>Hành Động</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -107,9 +105,8 @@ foreach($results as $row)
                                         <td><?php  echo htmlentities($row->AssignDate);?></td>
                                              <?php if($row->Status==""){ ?>
 
-                     <td><?php echo "Not Updated Yet"; ?></td>
-<?php } else { ?>                  <td><?php  echo htmlentities($row->Status);?>
-                  </td>
+                     <td><?php echo "Chưa Cập Nhật"; ?></td>
+<?php } else { ?>                  <td><?php  echo htmlentities($row->Status);?></td>
                   <?php } ?>         
                  
                                         <td><a href="view-bin-detail.php?editid=<?php echo htmlentities ($row->ID);?>&&binid=<?php echo htmlentities ($row->BinID);?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
@@ -118,7 +115,7 @@ foreach($results as $row)
 $cnt=$cnt+1;
 } } else { ?>
   <tr>
-    <td colspan="8"> No record found against this search</td>
+    <td colspan="8"> Không tìm thấy kết quả cho từ khóa này</td>
 
   </tr>
   <?php } }?>
@@ -133,6 +130,8 @@ $cnt=$cnt+1;
             </div>
         </div>
     </div>
+
+
 
 
 <!-- Jquery Core Js --> 

@@ -14,35 +14,33 @@ if (strlen($_SESSION['vamsid']==0)) {
 
 <head>
   
-    <title>Garbage Management System: Resolved Lodged Complain</title>
+    <title>Hệ thống Quản lý Rác: Các Khiếu Nại Đã Giải Quyết</title>
 
     <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css">
 
-    <link  rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body class="theme-indigo">
-    <!-- Page Loader -->
+    <!-- Trình tải trang -->
     
 <?php include_once('includes/header.php');?>
 
     <div class="main_content" id="main-content">
        <?php include_once('includes/sidebar.php');?>
 
-      
-
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">Resolved Lodged Complain</a>
+                <a class="navbar-brand" href="javascript:void(0);">Các Khiếu Nại Đã Giải Quyết</a>
             </nav>
             <div class="container-fluid">            
                 <div class="row clearfix">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="header">
-                                <h2><strong>Resolved</strong> Lodged Complain </h2>
+                                <h2><strong>Đã Giải Quyết</strong> Khiếu Nại Đã Được Gửi</h2>
                             </div>
                             <div class="body">
                                 <div class="table-responsive">
@@ -50,53 +48,53 @@ if (strlen($_SESSION['vamsid']==0)) {
                                         <thead>
                                             <tr>
                                                <th>S.No</th>
-                                        <th>Complain Number</th>
-                                        <th>Name</th>
-                                        <th>Mobile Number</th>
-                                        <th>Email</th>
-                                    <th>Status</th>
-                                        <th>Action</th>
+                                               <th>Số Khiếu Nại</th>
+                                               <th>Tên</th>
+                                               <th>Số Điện Thoại</th>
+                                               <th>Email</th>
+                                               <th>Trạng Thái</th>
+                                               <th>Hành Động</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                <th>S.No</th>
-                                        <th>Complain Number</th>
-                                        <th>Name</th>
-                                        <th>Mobile Number</th>
-                                        <th>Email</th>
-                                    <th>Status</th>
-                                        <th>Action</th>
+                                               <th>Số Khiếu Nại</th>
+                                               <th>Tên</th>
+                                               <th>Số Điện Thoại</th>
+                                               <th>Email</th>
+                                               <th>Trạng Thái</th>
+                                               <th>Hành Động</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                             <tr>
                                                <?php
                                                 $did=$_SESSION['vamsdid'];
-$sql="SELECT tbllodgedcomplain.ComplainNumber,tbllodgedcomplain.AssignTo,tbllodgedcomplain.ID as compid,tbllodgedcomplain.Status,tbluser.ID as uid,tbluser.FullName,tbluser.MobileNumber,tbluser.Email from tbllodgedcomplain join tbluser on tbluser.ID=tbllodgedcomplain.UserID where tbllodgedcomplain.Status ='Completed' && tbllodgedcomplain.AssignTo=:did";
-$query = $dbh -> prepare($sql);
-$query-> bindParam(':did', $did, PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
+                                                $sql="SELECT tbllodgedcomplain.ComplainNumber, tbllodgedcomplain.AssignTo, tbllodgedcomplain.ID as compid, tbllodgedcomplain.Status, tbluser.ID as uid, tbluser.FullName, tbluser.MobileNumber, tbluser.Email from tbllodgedcomplain join tbluser on tbluser.ID=tbllodgedcomplain.UserID where tbllodgedcomplain.Status ='Completed' && tbllodgedcomplain.AssignTo=:did";
+                                                $query = $dbh -> prepare($sql);
+                                                $query-> bindParam(':did', $did, PDO::PARAM_STR);
+                                                $query->execute();
+                                                $results=$query->fetchAll(PDO::FETCH_OBJ);
 
-
-if($query->rowCount() > 0)
-{
-foreach($results as $row)
-{               ?>
-                                             <td><?php echo htmlentities($cnt);?></td>
-                                        <td><?php  echo htmlentities($row->ComplainNumber);?></td>
-                                        <td><?php  echo htmlentities($row->FullName);?></td>
-                                        <td><?php  echo htmlentities($row->MobileNumber);?></td>
-                                        <td><?php  echo htmlentities($row->Email);?></td>
-                                             <?php if($row->Status==""){ ?>
-
-                     <td><?php echo "Not Updated Yet"; ?></td>
-<?php } else { ?>                  <td><?php  echo htmlentities($row->Status);?> (Assign to <?php  echo htmlentities($row->AssignTo);?>)
-                  </td>
-                  <?php } ?>         
-                 
-                                        <td><a href="view-complain-detail.php?editid=<?php echo htmlentities ($row->compid);?>&&comid=<?php echo htmlentities ($row->ComplainNumber);?>" class="btn btn-primary">View</a></td>
+                                                if($query->rowCount() > 0)
+                                                {
+                                                    foreach($results as $row)
+                                                    {               
+                                               ?>
+                                               <td><?php echo htmlentities($cnt);?></td>
+                                               <td><?php  echo htmlentities($row->ComplainNumber);?></td>
+                                               <td><?php  echo htmlentities($row->FullName);?></td>
+                                               <td><?php  echo htmlentities($row->MobileNumber);?></td>
+                                               <td><?php  echo htmlentities($row->Email);?></td>
+                                               <?php if($row->Status==""){ ?>
+                                                   <td><?php echo "Chưa Cập Nhật"; ?></td>
+                                               <?php } else { ?>
+                                                   <td><?php  echo htmlentities($row->Status);?> (Giao cho <?php  echo htmlentities($row->AssignTo);?>)
+                                                   </td>
+                                               <?php } ?>         
+                                               
+                                               <td><a href="view-complain-detail.php?editid=<?php echo htmlentities($row->compid);?>&&comid=<?php echo htmlentities($row->ComplainNumber);?>" class="btn btn-primary">Xem</a></td>
                                             </tr>
                                          <?php $cnt=$cnt+1;}} ?> 
                                         </tbody>
@@ -110,6 +108,7 @@ foreach($results as $row)
             </div>
         </div>
     </div>
+
 
 
 <!-- Jquery Core Js --> 

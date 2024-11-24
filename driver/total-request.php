@@ -10,11 +10,11 @@ if (strlen($_SESSION['vamsid']==0)) {
 
   ?>
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   
-    <title>Garbage Management System: Total Assign Bin</title>
+    <title>Hệ Thống Quản Lý Rác: Tổng Số Thùng Rác Được Giao</title>
 
     <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
@@ -31,42 +31,40 @@ if (strlen($_SESSION['vamsid']==0)) {
     <div class="main_content" id="main-content">
        <?php include_once('includes/sidebar.php');?>
 
-      
-
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">Total Assign Bin</a>
+                <a class="navbar-brand" href="javascript:void(0);">Tổng Số Thùng Rác Được Giao</a>
             </nav>
             <div class="container-fluid">            
                 <div class="row clearfix">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Total Assign Bin</h2>
+                                <h2>Tổng Số Thùng Rác Được Giao</h2>
                             </div>
                             <div class="body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                         <thead>
                                             <tr>
-                                               <th>S.No</th>
-                                        <th>Bin ID</th>
-                                        <th>Area</th>
-                                        <th>Locality</th>
-                                        <th>Assign Date</th>
-                                    <th>Status</th>
-                                        <th>Action</th>
+                                               <th>STT</th>
+                                        <th>ID Thùng Rác</th>
+                                        <th>Khu Vực</th>
+                                        <th>Địa Phương</th>
+                                        <th>Ngày Giao</th>
+                                    <th>Tình Trạng</th>
+                                        <th>Hành Động</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                               <th>S.No</th>
-                                        <th>Bin ID</th>
-                                        <th>Area</th>
-                                        <th>Locality</th>
-                                        <th>Assign Date</th>
-                                    <th>Status</th>
-                                        <th>Action</th>
+                                               <th>STT</th>
+                                        <th>ID Thùng Rác</th>
+                                        <th>Khu Vực</th>
+                                        <th>Địa Phương</th>
+                                        <th>Ngày Giao</th>
+                                    <th>Tình Trạng</th>
+                                        <th>Hành Động</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -79,7 +77,7 @@ $query-> bindParam(':did', $did, PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 
-
+$cnt=1;
 if($query->rowCount() > 0)
 {
 foreach($results as $row)
@@ -91,12 +89,11 @@ foreach($results as $row)
                                         <td><?php  echo htmlentities($row->AssignDate);?></td>
                                              <?php if($row->Status==""){ ?>
 
-                     <td><?php echo "Not Updated Yet"; ?></td>
-<?php } else { ?>                  <td><?php  echo htmlentities($row->Status);?>
-                  </td>
+                     <td><?php echo "Chưa Cập Nhật"; ?></td>
+<?php } else { ?>                  <td><?php  echo htmlentities($row->Status);?></td>
                   <?php } ?>         
                  
-                                        <td><a href="view-bin-detail.php?editid=<?php echo htmlentities ($row->ID);?>&&binid=<?php echo htmlentities ($row->BinID);?>" class="btn btn-primary"> View </a></td>
+                                        <td><a href="view-bin-detail.php?editid=<?php echo htmlentities ($row->ID);?>&&binid=<?php echo htmlentities ($row->BinID);?>" class="btn btn-primary"> Xem </a></td>
                                             </tr>
                                          <?php $cnt=$cnt+1;}} ?> 
                                         </tbody>
@@ -110,6 +107,8 @@ foreach($results as $row)
             </div>
         </div>
     </div>
+
+
 
 
 <!-- Jquery Core Js --> 

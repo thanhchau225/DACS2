@@ -34,11 +34,11 @@ $query->bindParam(':eid',$eid,PDO::PARAM_STR);
 
   ?>
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   
-    <title>Garbage Management System: View Complain</title>
+    <title>Hệ Thống Quản Lý Rác: Xem Khiếu Nại</title>
 
     <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
@@ -50,23 +50,21 @@ $query->bindParam(':eid',$eid,PDO::PARAM_STR);
 <body class="theme-indigo">
     <!-- Page Loader -->
     
-<?php include_once('includes/header.php');?>
+<?php include_once('includes/header.php');?> 
 
     <div class="main_content" id="main-content">
-       <?php include_once('includes/sidebar.php');?>
-
-      
+       <?php include_once('includes/sidebar.php');?> 
 
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">View Lodged Complain</a>
+                <a class="navbar-brand" href="javascript:void(0);">Xem Khiếu Nại Đã Gửi</a>
             </nav>
             <div class="container-fluid">            
                 <div class="row clearfix">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="header">
-                                <h2><strong>View Lodged</strong> Complain </h2>
+                                <h2><strong>Xem</strong> Khiếu Nại Đã Gửi</h2>
                             </div>
                             <div class="body">
                                 <div class="table-responsive">
@@ -85,101 +83,89 @@ foreach($results as $row)
 {               ?>
                                     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                        <tr>
-    <th style="color: orange;">Complain Number</th>
+    <th style="color: orange;">Số Khiếu Nại</th>
     <td colspan="4" style="color: orange;font-weight: bold;"><?php  echo $bookingno=($row->ComplainNumber);?></td>
-   
   </tr>
   <tr>
-    <th>Name</th>
+    <th>Họ Tên</th>
     <td><?php  echo $row->FullName;?></td>
      <th>Email</th>
     <td><?php  echo $row->Email;?></td>
-    
   </tr>
    <tr>
-    <th>Mobile Number</th>
+    <th>Số Điện Thoại</th>
     <td><?php  echo $row->MobileNumber;?></td>
-    <th>Address of Garbage</th>
+    <th>Địa Chỉ Rác</th>
     <td><?php  echo $row->Address;?></td>
-    
   </tr>
   <tr>
-    <th>Area</th>
+    <th>Khu Vực</th>
     <td><?php  echo $row->Area;?></td>
-    <th>Locality</th>
+    <th>Địa Phương</th>
     <td><?php  echo $row->Locality;?></td>
-    
   </tr>
   <tr>
-    <th>Landmark</th>
+    <th>Điểm Mốc</th>
     <td><?php  echo $row->Landmark;?></td>
-    <th>Note</th>
+    <th>Ghi Chú</th>
     <?php if($row->Note==""){ ?>
 
-                     <td><?php echo "No Notes"; ?></td>
-<?php } else { ?>                  <td><?php  echo htmlentities($row->Note);?>
-                  </td>
+                     <td><?php echo "Không Có Ghi Chú"; ?></td>
+<?php } else { ?>                  <td><?php  echo htmlentities($row->Note);?></td>
                   <?php } ?>
-    
-    
   </tr>
   <tr>
-    <th>Image</th>
+    <th>Hình Ảnh</th>
     <td colspan="4"><img src="../user/images/<?php echo $row->Photo;?>" width="200" height="150" value="<?php  echo $row->Photo;?>"></td>
   </tr>
   <tr>
-    <th >Assign To</th>
+    <th>Giao Cho</th>
     <?php if($row->AssignTo==""){ ?>
 
-                     <td><?php echo "Not Updated Yet"; ?></td>
-<?php } else { ?>                  <td><?php  echo htmlentities($row->AssignTo);?>
-                  </td>
+                     <td><?php echo "Chưa Cập Nhật"; ?></td>
+<?php } else { ?>                  <td><?php  echo htmlentities($row->AssignTo);?></td>
                   <?php } ?>  
-                   <th>Complain Date</th>
+                   <th>Ngày Khiếu Nại</th>
     <td><?php  echo $row->ComplainDate;?></td>     
-    
   </tr>
    <tr>
-    <th> Complain Final Status</th>
+    <th>Tình Trạng Cuối Cùng Của Khiếu Nại</th>
    <td> <?php  $status=$row->Status;
     
 if($row->Status=="Approved")
 {
-  echo "Your request has been approved";
+  echo "Yêu cầu của bạn đã được chấp nhận";
 }
 
 if($row->Status=="Rejected")
 {
- echo "Your request has been cancelled";
+ echo "Yêu cầu của bạn đã bị hủy";
 }
 if($row->Status=="On the way")
 {
- echo "Driver is on the way";
+ echo "Tài xế đang trên đường";
 }
 if($row->Status=="Completed")
 {
- echo "Garbage has been collected";
+ echo "Rác đã được thu gom";
 }
 
 if($row->Status=="")
 {
-  echo "Not Response Yet";
+  echo "Chưa có phản hồi";
 }
-
-
      ;?></td>
-    <th>Admin Remark</th>
+    <th>Nhận Xét Của Quản Trị Viên</th>
     <?php if($row->Status==""){ ?>
 
-                     <td  colspan="4"><?php echo "Not Updated Yet"; ?></td>
-<?php } else { ?>                  <td><?php  echo htmlentities($row->Status);?>
-                  </td>
+                     <td  colspan="4"><?php echo "Chưa Cập Nhật"; ?></td>
+<?php } else { ?>                  <td><?php  echo htmlentities($row->Status);?></td>
                   <?php } ?>  
-
   </tr>
 
   <?php $cnt=$cnt+1;}} ?>
                                             
+
                                     </table>
                                     <?php 
 $comid=$_GET['comid']; 
@@ -193,13 +179,13 @@ $cnt=1;
  ?>
 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
   <tr align="center">
-   <th colspan="4" style="color: blue" >Tracking History</th> 
+   <th colspan="4" style="color: blue" >Lịch Sử Theo Dõi</th> 
   </tr>
   <tr>
     <th>#</th>
-<th>Remark</th>
-<th>Status</th>
-<th>Time</th>
+<th>Nhận Xét</th>
+<th>Tình Trạng</th>
+<th>Thời Gian</th>
 </tr>
 <?php  
 foreach($results as $row)
@@ -207,8 +193,7 @@ foreach($results as $row)
 <tr>
   <td><?php echo $cnt;?></td>
  <td><?php  echo $row->Remark;?></td> 
-  <td><?php  echo $row->Status;
-?></td> 
+  <td><?php  echo $row->Status;?></td> 
    <td><?php  echo $row->RemarkDate;?></td> 
 </tr>
 <?php $cnt=$cnt+1;} ?>
@@ -221,14 +206,15 @@ foreach($results as $row)
 if ($status=="Approved" || $status=="On the way"){
 ?> 
 <p align="center"  style="padding-top: 20px">                            
- <button class="btn btn-primary waves-effect waves-light w-lg" data-toggle="modal" data-target="#myModal">Take Action</button></p>  
+
+ <button class="btn btn-primary waves-effect waves-light w-lg" data-toggle="modal" data-target="#myModal">Thực Hiện Hành Động</button></p>  
 
 <?php } ?>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
      <div class="modal-content">
       <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Take Action</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Thực Hiện Hành Động</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -238,40 +224,30 @@ if ($status=="Approved" || $status=="On the way"){
 
                                 <form method="post" name="submit">
 
-                                
-                               
      <tr>
-    <th>Remark :</th>
+    <th>Nhận Xét :</th>
     <td>
-    <textarea name="remark" placeholder="Remark" rows="12" cols="14" class="form-control wd-450" required="true"></textarea></td>
+    <textarea name="remark" placeholder="Nhận xét" rows="12" cols="14" class="form-control wd-450" required="true"></textarea></td>
   </tr>
   <tr>
-    <th>Status :</th>
+    <th>Tình Trạng :</th>
     <td>
 
    <select name="status" class="form-control wd-450" required="true" >
-
-    <?php if($status=='Approved'){?>
-     <option value="On the way" selected="true">On the way</option>
-     <option value="Completed">Completed</option>
- <?php } elseif ($status=='On the way') { ?>
-<option value="Completed">Completed</option>
- <?php }?>
+     <option value="On the way" selected="true">Đang trên đường</option>
+     <option value="Completed">Hoàn Thành</option>
    </select></td>
   </tr>
 </table>
 </div>
 <div class="modal-footer">
- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
- <button type="submit" name="submit" class="btn btn-primary">Update</button>
+ <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+ <button type="submit" name="submit" class="btn btn-primary">Cập Nhật</button>
   
   </form>
-  
-
 </div>
 
-                      
-                        </div>
+                       </div>
                     </div>
 
                         </div>
@@ -282,7 +258,7 @@ if ($status=="Approved" || $status=="On the way"){
                         </div>
                     </div>
                 </div>
-               
+                </div>
             </div>
         </div>
     </div>

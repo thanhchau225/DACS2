@@ -13,92 +13,88 @@ if (strlen($_SESSION['vamsid']==0)) {
 <html lang="en">
 
 <head>
-  
-    <title>Garbage Management System: View Task Competed Report For Bin</title>
+    <title>Hệ thống Quản lý Rác: Xem Báo cáo Công việc Hoàn thành cho Thùng Rác</title>
 
     <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css">
 
-    <link  rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body class="theme-indigo">
     <!-- Page Loader -->
     
-<?php include_once('includes/header.php');?>
+    <?php include_once('includes/header.php');?>
 
     <div class="main_content" id="main-content">
        <?php include_once('includes/sidebar.php');?>
 
-      
 
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">View Task Competed Report For Bin</a>
+                <a class="navbar-brand" href="javascript:void(0);">Xem Báo cáo Công việc Hoàn thành cho Thùng Rác</a>
             </nav>
             <div class="container-fluid">            
                 <div class="row clearfix">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="header">
-                                <h2>View Task Competed Report For Bin</h2>
+                                <h2>Xem Báo cáo Công việc Hoàn thành cho Thùng Rác</h2>
                             </div>
                             <div class="body">
                                 <?php
-$fdate=$_POST['fromdate'];
-$tdate=$_POST['todate'];
-
-?>
-<h5 align="center" style="color:blue">Report from <?php echo $fdate?> to <?php echo $tdate?></h5>
+                                $fdate=$_POST['fromdate'];
+                                $tdate=$_POST['todate'];
+                                ?>
+                                <h5 align="center" style="color:blue">Báo cáo từ <?php echo $fdate?> đến <?php echo $tdate?></h5>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                         <thead>
                                             <tr>
-                                               <th>S.No</th>
-                                        <th>Work Assign</th>
-                                        <th>Completed Work</th>
-                                        <th>Remaining Work</th>
-                                    
+                                               <th>STT</th>
+                                               <th>Công việc đã giao</th>
+                                               <th>Công việc đã hoàn thành</th>
+                                               <th>Công việc còn lại</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                              <th>S.No</th>
-                                       <th>Work Assign</th>
-                                        <th>Completed Work</th>
-                                        <th>Remaining Work</th>
+                                              <th>STT</th>
+                                              <th>Công việc đã giao</th>
+                                              <th>Công việc đã hoàn thành</th>
+                                              <th>Công việc còn lại</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                           
-                                               <?php
-                                               $did=$_SESSION['vamsdid'];
+                                           <?php
+                                           $did=$_SESSION['vamsdid'];
 
-
-$sql="SELECT  
-count(ID) as assigned,  
-count(if(tblbin.Status = 'Completed', 1, 0)) AS completed from  tblbin  
-where tblbin.DriverAssignee=:did && date(AssignDate) between '$fdate' and '$tdate'";
-$query = $dbh -> prepare($sql);
-$query-> bindParam(':did', $did, PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $row)
-{               ?> <tr>
+                                           $sql="SELECT  
+                                           count(ID) as assigned,  
+                                           count(if(tblbin.Status = 'Completed', 1, 0)) AS completed from  tblbin  
+                                           where tblbin.DriverAssignee=:did && date(AssignDate) between '$fdate' and '$tdate'";
+                                           $query = $dbh -> prepare($sql);
+                                           $query-> bindParam(':did', $did, PDO::PARAM_STR);
+                                           $query->execute();
+                                           $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                           $cnt=1;
+                                           if($query->rowCount() > 0)
+                                           {
+                                               foreach($results as $row)
+                                               {               
+                                           ?> 
+                                           <tr>
                                               <td><?php echo htmlentities($cnt);?></td>
-                                        <td><?php  echo htmlentities($ta=$row->assigned);?></td>
-                                        <td><?php  echo htmlentities($sc=$row->completed);?></td>
-                                        <td><?php  echo htmlentities($ta-$sc);?></td>
-                                            </tr>
-                                         <?php $cnt=$cnt+1;}} else{ ?> 
-<tr>
-<td colspan="6">No Record found</td>    
-</tr>
-                                         <?php } ?>
+                                              <td><?php echo htmlentities($ta=$row->assigned);?></td>
+                                              <td><?php echo htmlentities($sc=$row->completed);?></td>
+                                              <td><?php echo htmlentities($ta-$sc);?></td>
+                                           </tr>
+                                           <?php $cnt=$cnt+1;}} else{ ?> 
+                                           <tr>
+                                              <td colspan="6">Không tìm thấy dữ liệu</td>    
+                                           </tr>
+                                           <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -110,6 +106,8 @@ foreach($results as $row)
             </div>
         </div>
     </div>
+
+
 
 
 <!-- Jquery Core Js --> 

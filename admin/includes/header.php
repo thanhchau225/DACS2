@@ -1,15 +1,8 @@
 <nav class="navbar custom-navbar navbar-expand-lg py-2">
     <div class="container-fluid px-0">
-        <a href="dashboard.php" class="navbar-brand"><strong>Hệ thống quản lý rác thải</strong></a>
+        <a href="dashboard.php" class="navbar-brand"><strong>HỆ THỐNG QUẢN LÝ RÁC THẢI</strong></a>
         <div id="navbar_main" class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item page-header">
-                    <ul class="breadcrumb" style="padding-left: 20px;">
-                        <li class="breadcrumb-item"><a href="dashboard.php"><i class="fa fa-home"></i></a></li>
-                        <li class="breadcrumb-item active">Bảng điều khiển</li>
-                    </ul>
-                </li>
-            </ul>
+           
             <ul class="navbar-nav ml-auto">
                 <!-- Thông báo Dropdown -->
                 <li class="nav-item dropdown">

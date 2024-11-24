@@ -10,11 +10,11 @@ if (strlen($_SESSION['vamsid']==0)) {
 
   ?>
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   
-    <title>Garbage Management System: Task Completed Report</title>
+    <title>Hệ Thống Quản Lý Rác: Báo Cáo Công Việc Hoàn Thành</title>
 
     <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
@@ -24,37 +24,36 @@ if (strlen($_SESSION['vamsid']==0)) {
     <link  rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body class="theme-indigo">
-    <!-- Page Loader -->
+    <!-- Trình tải trang -->
     
 <?php include_once('includes/header.php');?>
 
     <div class="main_content" id="main-content">
        <?php include_once('includes/sidebar.php');?>
 
-      
 
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">Task Resolved Report</a>
+                <a class="navbar-brand" href="javascript:void(0);">Báo Cáo Công Việc Đã Giải Quyết</a>
             </nav>
             <div class="container-fluid">            
                 <div class="row clearfix">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Task Resolved Report </h2>
+                                <h2>Báo Cáo Công Việc Đã Giải Quyết</h2>
                             </div>
                             
                             <div class="body">
                                 <form id="basic-form" method="post" action="lodegedcomplain-reprtsdetails.php">
                                 <div class="form-group">
-                                   <label for="exampleTextInput1" class="col-sm-3 control-label">From Date:</label>
+                                   <label for="exampleTextInput1" class="col-sm-3 control-label">Từ Ngày:</label>
                                      <input type="date" class="form-control" id="fromdate" name="fromdate" value="" required='true'></div>
                                 <div class="form-group">
-                                   <label for="exampleTextInput1" class="col-sm-3 control-label">To Date:</label>
+                                   <label for="exampleTextInput1" class="col-sm-3 control-label">Đến Ngày:</label>
                                    <input type="date" class="form-control" id="todate" name="todate" value="" required='true'></div>
                                 <br>
-                                <button type="submit" class="btn btn-primary" name="submit" id="submit">Submit</button>
+                                <button type="submit" class="btn btn-primary" name="submit" id="submit">Gửi</button>
                             </form>
                               
                             </div>
@@ -65,6 +64,8 @@ if (strlen($_SESSION['vamsid']==0)) {
             </div>
         </div>
     </div>
+
+
 
 
 <!-- Jquery Core Js --> 

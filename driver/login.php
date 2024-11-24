@@ -4,36 +4,33 @@ error_reporting(0);
 include('includes/dbconnection.php');
 
 if(isset($_POST['login'])) 
-  {
+{
     $did=$_POST['did'];
     $password=md5($_POST['password']);
     $sql ="SELECT ID, DriverID FROM tbldriver WHERE DriverID=:did and Password=:password";
     $query=$dbh->prepare($sql);
     $query->bindParam(':did',$did,PDO::PARAM_STR);
-$query-> bindParam(':password', $password, PDO::PARAM_STR);
-    $query-> execute();
+    $query->bindParam(':password', $password, PDO::PARAM_STR);
+    $query->execute();
     $results=$query->fetchAll(PDO::FETCH_OBJ);
     if($query->rowCount() > 0)
-{
-foreach ($results as $result) {
-$_SESSION['vamsid']=$result->ID;
-$_SESSION['vamsdid']=$result->DriverID;
-
+    {
+        foreach ($results as $result) {
+            $_SESSION['vamsid']=$result->ID;
+            $_SESSION['vamsdid']=$result->DriverID;
+        }
+        $_SESSION['login']=$_POST['did'];
+        echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
+    } else {
+        echo "<script>alert('Thông tin không hợp lệ');</script>";
+    }
 }
-$_SESSION['login']=$_POST['did'];
-echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
-} else{
-echo "<script>alert('Invalid Details');</script>";
-}
-}
-
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 
 <head>
-    
-    <title>Garbage Management System: Login</title>
+    <title>Hệ Thống Quản Lý Rác: Đăng Nhập</title>
     <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
 
@@ -41,11 +38,11 @@ echo "<script>alert('Invalid Details');</script>";
 </head>
 
 <body class="theme-indigo">
-    <!-- Page Loader -->
+    <!-- Trình tải trang -->
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="m-t-30"><img src="../assets/images/brand/icon_black.svg" width="48" height="48" alt="ArrOw"></div>
-            <p>Please wait...</p>
+            <p>Vui lòng đợi...</p>
         </div>
     </div>
 	<!-- WRAPPER -->
@@ -54,28 +51,27 @@ echo "<script>alert('Invalid Details');</script>";
 			<div class="vertical-align-middle auth-main">
 				<div class="auth-box">
                     <div class="top">
-                       
-                        <strong>Garbage</strong> <span>Management System</span>
+                        <strong>Hệ Thống</strong> <span>Quản Lý Rác</span>
                     </div>
 					<div class="card">
                         <div class="header">
-                            <p class="lead">Login to your account</p>
+                            <p class="lead">Đăng nhập vào tài khoản của bạn</p>
                         </div>
                         <div class="body">
                             <form class="form-auth-small" action="" method="post">
                                 <div class="form-group">
-                                    <label for="signin-email" class="control-label sr-only">Identity Number</label>
-                                    <input type="text" class="form-control" placeholder="Enter your ID" required="true" name="did" value="" >
+                                    <label for="signin-email" class="control-label sr-only">Mã số</label>
+                                    <input type="text" class="form-control" placeholder="Nhập mã ID của bạn" required="true" name="did" value="" >
                                 </div>
                                 <div class="form-group">
-                                    <label for="signin-password" class="control-label sr-only">Password</label>
-                                    <input type="password" class="form-control" placeholder="Password" name="password" required="true" value="">
+                                    <label for="signin-password" class="control-label sr-only">Mật khẩu</label>
+                                    <input type="password" class="form-control" placeholder="Mật khẩu" name="password" required="true" value="">
                                 </div>
                                 
-                                <button type="submit" class="btn btn-primary btn-lg btn-block" name="login">LOGIN</button>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" name="login">ĐĂNG NHẬP</button>
                                 <div class="bottom">
-                                    <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="forgot-password.php">Forgot password?</a></span>
-                                   <a href="../index.php">Back Home!!</a>
+                                    <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="forgot-password.php">Quên mật khẩu?</a></span>
+                                   <a href="../index.php">Quay lại Trang Chủ!!</a>
                                 </div>
                             </form>
                         </div>

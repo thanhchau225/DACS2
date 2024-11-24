@@ -13,8 +13,7 @@ if (strlen($_SESSION['vamsdid']==0)) {
 <html lang="en">
 
 <head>
-  
-    <title>Garbage Management System: Assign Garbage Bin</title>
+    <title>Hệ thống Quản lý Rác: Giao thùng rác</title>
 
     <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
@@ -26,64 +25,64 @@ if (strlen($_SESSION['vamsdid']==0)) {
 <body class="theme-indigo">
     <!-- Page Loader -->
     
-<?php include_once('includes/header.php');?>
+    <?php include_once('includes/header.php');?>
 
     <div class="main_content" id="main-content">
        <?php include_once('includes/sidebar.php');?>
 
-      
 
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">Assign Garbage Bin</a>
+                <a class="navbar-brand" href="javascript:void(0);">Giao thùng rác</a>
             </nav>
             <div class="container-fluid">            
                 <div class="row clearfix">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="header">
-                                <h2><strong>Assign</strong> Garbage Bin </h2>
+                                <h2><strong>Giao</strong> thùng rác </h2>
                             </div>
                             <div class="body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                         <thead>
                                             <tr>
-                                               <th>S.No</th>
-                                        <th>Booking Number</th>
-                                        <th>Name</th>
-                                        <th>Mobile Number</th>
-                                        <th>Email</th>
-                                    <th>Status</th>
-                                        <th>Action</th>
+                                               <th>STT</th>
+                                               <th>Số booking</th>
+                                               <th>Họ và tên</th>
+                                               <th>Số điện thoại</th>
+                                               <th>Email</th>
+                                               <th>Trạng thái</th>
+                                               <th>Hành động</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                              <th>S.No</th>
-                                        <th>Booking Number</th>
-                                        <th>Name</th>
-                                        <th>Mobile Number</th>
-                                        <th>Email</th>
-                                    <th>Status</th>
-                                        <th>Action</th>
+                                               <th>STT</th>
+                                               <th>Số booking</th>
+                                               <th>Họ và tên</th>
+                                               <th>Số điện thoại</th>
+                                               <th>Email</th>
+                                               <th>Trạng thái</th>
+                                               <th>Hành động</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                             <tr>
                                                <?php
                                                $did=$_SESSION['vamsdid'];
-$sql="SELECT * from  tblbook where Status='Approved' && AssignTo=:did";
-$query = $dbh -> prepare($sql);
-$query-> bindParam(':did', $did, PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
+                                               $sql="SELECT * from  tblbook where Status='Approved' && AssignTo=:did";
+                                               $query = $dbh -> prepare($sql);
+                                               $query-> bindParam(':did', $did, PDO::PARAM_STR);
+                                               $query->execute();
+                                               $results=$query->fetchAll(PDO::FETCH_OBJ);
 
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $row)
-{               ?>
+                                               $cnt=1;
+                                               if($query->rowCount() > 0)
+                                               {
+                                                   foreach($results as $row)
+                                                   {               
+                                               ?>
                                               <td><?php echo htmlentities($cnt);?></td>
                                         <td><?php  echo htmlentities($row->BookingNumber);?></td>
                                         <td><?php  echo htmlentities($row->Name);?></td>
@@ -91,12 +90,11 @@ foreach($results as $row)
                                         <td><?php  echo htmlentities($row->Email);?></td>
                                              <?php if($row->Status==""){ ?>
 
-                     <td><?php echo "Not Updated Yet"; ?></td>
+                     <td><?php echo "Chưa cập nhật"; ?></td>
 <?php } else { ?>                  <td><?php  echo htmlentities($row->Status);?>
                   </td>
                   <?php } ?>         
-                 
-                                        <td><a href="view-booking-detail.php?editid=<?php echo htmlentities ($row->ID);?>&&bookid=<?php echo htmlentities ($row->BookingNumber);?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                  <td><a href="view-booking-detail.php?editid=<?php echo htmlentities ($row->ID);?>&&bookid=<?php echo htmlentities ($row->BookingNumber);?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                                             </tr>
                                          <?php $cnt=$cnt+1;}} ?> 
                                         </tbody>
@@ -110,6 +108,8 @@ foreach($results as $row)
             </div>
         </div>
     </div>
+
+
 
 
 <!-- Jquery Core Js --> 

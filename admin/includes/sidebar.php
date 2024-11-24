@@ -1,23 +1,13 @@
 <div class="left_sidebar">
     <nav class="sidebar">
         <div class="user-info">
-            <div class="image"><a href="javascript:void(0);"><img src="../assets/images/user.png" alt="Người dùng"></a></div>
-            <div class="detail mt-3">
-                <?php
-                $aid = $_SESSION['vamsaid'];
-                $sql = "SELECT AdminName, Email from tbladmin where ID=:aid";
-                $query = $dbh->prepare($sql);
-                $query->bindParam(':aid', $aid, PDO::PARAM_STR);
-                $query->execute();
-                $results = $query->fetchAll(PDO::FETCH_OBJ);
-                $cnt = 1;
-                if ($query->rowCount() > 0) {
-                    foreach ($results as $row) { ?>
-                        <h5 class="mb-0"><?php echo $row->AdminName; ?></h5>
-                        <small><?php echo $row->Email; ?></small><?php $cnt = $cnt + 1;
-                    }
-                } ?>
-            </div>
+        <div class="image">
+    <a href="javascript:void(0);">
+        <img src="../assets/images/recycling-logo.png" alt="Logo Tái Chế Rác">
+    </a>
+</div>
+
+           
         </div>
         <ul id="main-menu" class="metismenu">
             <li class="active"><a href="dashboard.php"><i class="ti-home"></i><span>Bảng điều khiển</span></a></li>

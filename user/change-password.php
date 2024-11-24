@@ -26,22 +26,19 @@ $chngpwd1-> bindParam(':uid', $uid, PDO::PARAM_STR);
 $chngpwd1-> bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
 $chngpwd1->execute();
 
-echo '<script>alert("Your password successully changed")</script>';
+echo '<script>alert("Mật khẩu của bạn đã được thay đổi thành công")</script>';
 } else {
-echo '<script>alert("Your current password is wrong")</script>';
+echo '<script>alert("Mật khẩu hiện tại của bạn không đúng")</script>';
 
 }
 
-
-
 }
 
-  
-  ?>
+?>
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 <head>
-<title>Garbage Management System: Change Password</title>
+<title>Hệ Thống Quản Lý Rác Thải: Đổi Mật Khẩu</title>
 
 <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
 <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
@@ -55,7 +52,7 @@ function checkpass()
 {
 if(document.changepassword.newpassword.value!=document.changepassword.confirmpassword.value)
 {
-alert('New Password and Confirm Password field does not match');
+alert('Mật khẩu mới và mật khẩu xác nhận không khớp');
 document.changepassword.confirmpassword.focus();
 return false;
 }
@@ -70,44 +67,40 @@ return true;
     <div class="main_content" id="main-content">
        <?php include_once('includes/sidebar.php');?>
 
-      
 
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">Change Password</a>
-               
+                <a class="navbar-brand" href="javascript:void(0);">Đổi Mật Khẩu</a>
             </nav>
             <div class="container-fluid">
                 <div class="row clearfix">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Change Password</h2>
+                                <h2>Đổi Mật Khẩu</h2>
                             </div>
                             <div class="body">
                                 <form id="" method="post" onsubmit="return checkpass();" name="changepassword" novalidate >
                                     
                                     <div class="form-group">
-                                        <label>Current Password</label>
-                                        <input type="password" class="form-control" name="currentpassword" id="currentpassword"required='true'>
+                                        <label>Mật Khẩu Hiện Tại</label>
+                                        <input type="password" class="form-control" name="currentpassword" id="currentpassword" required='true'>
                                     </div>
                                     <div class="form-group">
-                                        <label>New Password</label>
-                                       <input type="password" class="form-control" name="newpassword"  class="form-control" required="true">
-                                    <div class="form-group">
-                                        <label>Confirm Password</label>
-                                        <input type="password" class="form-control"  name="confirmpassword" id="confirmpassword"  required='true'>
+                                        <label>Mật Khẩu Mới</label>
+                                       <input type="password" class="form-control" name="newpassword" class="form-control" required="true">
                                     </div>
-                                    
-                                  
+                                    <div class="form-group">
+                                        <label>Xác Nhận Mật Khẩu</label>
+                                        <input type="password" class="form-control" name="confirmpassword" id="confirmpassword" required='true'>
+                                    </div>
                                     
                                     <br>
-                                    <button type="submit" class="btn btn-primary" name="submit">Change</button>
+                                    <button type="submit" class="btn btn-primary" name="submit">Đổi</button>
                                 </form>
                             </div>
                         </div>
                     </div>
-               
                 </div>
             </div>
         </div>
@@ -124,12 +117,12 @@ return true;
 <script src="../assets/js/theme.js"></script>
 <script>
     $(function() {
-        // validation needs name of the element
+        // Cần tên của phần tử để thực hiện xác minh
         $('#food').multiselect();
 
-        // initialize after multiselect
+        // Khởi tạo sau khi chọn nhiều mục
         $('#basic-form').parsley();
     });
 </script>
 </body>
-</html><?php }  ?>
+</html><?php } ?>

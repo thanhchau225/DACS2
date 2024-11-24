@@ -77,17 +77,17 @@ $query->execute();
                                         <tbody>
                                             <tr>
                                                 <?php
-$sql="SELECT * from tblbin";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
+        $sql="SELECT * from tblbin";
+        $query = $dbh -> prepare($sql);
+        $query->execute();
+        $results=$query->fetchAll(PDO::FETCH_OBJ);
 
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $row)
-{               ?>
-                                               <td><?php echo htmlentities($cnt);?></td>
+        $cnt=1;
+        if($query->rowCount() > 0)
+        {
+        foreach($results as $row)
+        {               ?>
+                                                    <td><?php echo htmlentities($cnt);?></td>
                                         <td><?php  echo htmlentities($row->BinID);?></td>
                                         <td><?php  echo htmlentities($row->Address);?></td>
                                         <td><?php  echo htmlentities($row->DriverAssignee);?></td>
@@ -106,7 +106,6 @@ foreach($results as $row)
             </div>
         </div>
     </div>
-
 <!-- Jquery Core Js --> 
 <script src="../assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
 <script src="../assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
@@ -118,10 +117,11 @@ foreach($results as $row)
 <script src="../assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js"></script>
 <script src="../assets/vendor/jquery-datatable/buttons/buttons.flash.min.js"></script>
 <script src="../assets/vendor/jquery-datatable/buttons/buttons.html5.min.js"></script>
-<script src="../assets/vendor/jquery-datatable/buttons/buttons.print.min.js"></script>
+<script src="../assets/vendor/jquery-datatable/buttons/buttons.print.min.js"></script>s
 
 <script src="../assets/js/theme.js"></script><!-- Custom Js --> 
 <script src="../assets/js/pages/tables/jquery-datatable.js"></script>
+
 </body>
 </html>
 <?php }  ?>

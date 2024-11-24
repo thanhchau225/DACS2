@@ -27,9 +27,9 @@ $query->execute();
   }
   ?>
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 <head>
-<title>Garbage Management System: Profile</title>
+<title>Hệ Thống Quản Lý Rác: Hồ Sơ Tài Xế</title>
 
 <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
 <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
@@ -45,40 +45,38 @@ $query->execute();
     <div class="main_content" id="main-content">
        <?php include_once('includes/sidebar.php');?>
 
-      
-
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">Driver Profile</a>
-               
+                <a class="navbar-brand" href="javascript:void(0);">Hồ Sơ Tài Xế</a>
             </nav>
             <div class="container-fluid">
                 <div class="row clearfix">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Driver Profile</h2>
+                                <h2>Hồ Sơ Tài Xế</h2>
                             </div>
                             <div class="body">
                                 <form id="" method="post" novalidate>
                                     <?php
-$did=$_SESSION['vamsid'];
-$sql="SELECT * from  tbldriver where ID=:did";
-$query = $dbh -> prepare($sql);
-$query->bindParam(':did',$did,PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $row)
-{               ?>
+                                    $did=$_SESSION['vamsid'];
+                                    $sql="SELECT * from tbldriver where ID=:did";
+                                    $query = $dbh -> prepare($sql);
+                                    $query->bindParam(':did',$did,PDO::PARAM_STR);
+                                    $query->execute();
+                                    $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                    $cnt=1;
+                                    if($query->rowCount() > 0)
+                                    {
+                                        foreach($results as $row)
+                                        {               
+                                    ?>
                                     <div class="form-group">
-                                        <label>Your ID</label>
+                                        <label>ID Của Bạn</label>
                                         <input type="text" class="form-control" id="exampleTextInput1" name="" value="<?php  echo $row->DriverID;?>" readonly='true'>
                                     </div>
                                     <div class="form-group">
-                                        <label>Name</label>
+                                        <label>Tên</label>
                                        <input type="text" class="form-control" id="email2" name="name" value="<?php  echo $row->Name;?>" required="true">
                                     </div>
                                     <div class="form-group">
@@ -86,31 +84,31 @@ foreach($results as $row)
                                         <input type="email" class="form-control" id="email2" name="email" value="<?php  echo $row->Email;?>" required='true'>
                                     </div>
                                     <div class="form-group">
-                                        <label>Contact Number</label>
+                                        <label>Số Điện Thoại</label>
                                         <input type="text" class="form-control" id="email2" name="mobilenumber" value="<?php  echo $row->MobileNumber;?>" required='true' maxlength='10'>
                                     </div>
                                     <div class="form-group">
-                                        <label>Address</label>
-                                       <textarea type="text" class="form-control" id="address" name="address" value="<?php  echo $row->UserName;?>" required="true"><?php  echo $row->Address;?></textarea>
+                                        <label>Địa Chỉ</label>
+                                       <textarea type="text" class="form-control" id="address" name="address" required="true"><?php  echo $row->Address;?></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label>Joining Date</label>
+                                        <label>Ngày Tham Gia</label>
                                         <input type="text" class="form-control" id="email2" name="" value="<?php  echo $row->JoiningDate;?>" readonly="true">
                                     </div>
                                     
-                                    
                                      <?php $cnt=$cnt+1;}} ?>
                                     <br>
-                                    <button type="submit" class="btn btn-primary" name="submit">Update</button>
+                                    <button type="submit" class="btn btn-primary" name="submit">Cập Nhật</button>
                                 </form>
                             </div>
                         </div>
                     </div>
-               
                 </div>
             </div>
         </div>
     </div>
+
+
 
 <!-- Core -->
 <script src="../assets/bundles/libscripts.bundle.js"></script>

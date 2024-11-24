@@ -118,7 +118,7 @@ foreach($results as $row)
 <script src="../assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js"></script>
 <script src="../assets/vendor/jquery-datatable/buttons/buttons.flash.min.js"></script>
 <script src="../assets/vendor/jquery-datatable/buttons/buttons.html5.min.js"></script>
-<script src="../assets/vendor/jquery-datatable/buttons/buttons.print.min.js"></script>
+<script src="../assets/vendor/jquery-datatable/buttons/buttons.print.min.js"></script>s
 
 <script src="../assets/js/theme.js"></script><!-- Custom Js --> 
 <script src="../assets/js/pages/tables/jquery-datatable.js"></script>

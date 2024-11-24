@@ -1,0 +1,64 @@
+/* Thêm hiệu ứng hover cho các thẻ widget */
+.card {
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px; /* Bo tròn các card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ cho các card */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Hiệu ứng phóng to khi hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Thêm bóng đổ mạnh hơn khi hover */
+}
+
+/* Thêm hiệu ứng khi nhấn vào card */
+.card:active {
+    transform: scale(0.98); /* Hiệu ứng thu nhỏ khi nhấn */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Giảm bóng đổ khi nhấn */
+}
+
+/* Hiệu ứng cho các liên kết */
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #007bff; /* Thay đổi màu khi hover */
+}
+
+/* Bo tròn các liên kết trong các thẻ */
+a {
+    border-radius: 5px; /* Bo tròn các liên kết */
+    padding: 5px;
+}
+
+a:focus, a:active {
+    outline: none; /* Tắt viền khi nhấn vào liên kết */
+}
+
+/* Thêm hiệu ứng cho các button */
+button {
+    transition: all 0.3s ease-in-out;
+    border-radius: 50px; /* Bo tròn các button */
+}
+
+button:hover {
+    background-color: #007bff; /* Thay đổi màu nền khi hover */
+    color: #fff; /* Đổi màu chữ khi hover */
+    transform: scale(1.1); /* Phóng to button khi hover */
+}
+
+button:active {
+    transform: scale(0.98); /* Thu nhỏ khi nhấn */
+}
+
+/* Thêm hiệu ứng cho hình ảnh */
+img {
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px; /* Bo tròn hình ảnh */
+}
+
+img:hover {
+    transform: scale(1.05); /* Phóng to hình ảnh khi hover */
+}

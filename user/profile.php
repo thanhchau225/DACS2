@@ -25,9 +25,9 @@ $query->execute();
   }
   ?>
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 <head>
-<title>Garbage Management System: Profile</title>
+<title>Hệ thống quản lý rác thải: Hồ sơ</title>
 
 <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
 <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
@@ -44,65 +44,59 @@ $query->execute();
        <?php include_once('includes/sidebar.php');?>
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">User Profile</a>
-               
+                <a class="navbar-brand" href="javascript:void(0);">Hồ sơ người dùng</a>
             </nav>
             <div class="container-fluid">
                 <div class="row clearfix">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h2>User Profile</h2>
+                                <h2>Hồ sơ người dùng</h2>
                             </div>
                             <div class="body">
                                 <form id="" method="post" novalidate>
                                     <?php
-$uid=$_SESSION['uuid'];
-$sql="SELECT * from  tbluser where ID=:uid";
-$query = $dbh -> prepare($sql);
-$query->bindParam(':uid',$uid,PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $row)
-{               ?>
+                                    $uid = $_SESSION['uuid'];
+                                    $sql = "SELECT * FROM tbluser WHERE ID = :uid";
+                                    $query = $dbh->prepare($sql);
+                                    $query->bindParam(':uid', $uid, PDO::PARAM_STR);
+                                    $query->execute();
+                                    $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                    $cnt = 1;
+                                    if ($query->rowCount() > 0) {
+                                        foreach ($results as $row) { ?>
                                     <div class="form-group">
-                                        <label>Full Name</label>
-                                        <input type="text" class="form-control" id="exampleTextInput1" name="fname" value="<?php  echo $row->FullName;?>" required='true'>
+                                        <label>Họ và tên</label>
+                                        <input type="text" class="form-control" id="exampleTextInput1" name="fname" value="<?php echo $row->FullName;?>" required='true'>
                                     </div>
                                     <div class="form-group">
-                                        <label>User Name</label>
-                                        <input type="text" class="form-control" id="email2" name="username" value="<?php  echo $row->UserName;?>" readonly="true">
+                                        <label>Tên đăng nhập</label>
+                                        <input type="text" class="form-control" id="email2" name="username" value="<?php echo $row->UserName;?>" readonly="true">
                                     </div>
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" class="form-control" id="email2" name="email" value="<?php  echo $row->Email;?>" required='true'>
+                                        <input type="email" class="form-control" id="email2" name="email" value="<?php echo $row->Email;?>" required='true'>
                                     </div>
                                     <div class="form-group">
-                                        <label>Contact Number</label>
-                                       <input type="text" class="form-control" id="email2" name="mobilenumber" value="<?php  echo $row->MobileNumber;?>" required='true' maxlength='10'>
+                                        <label>Số điện thoại</label>
+                                        <input type="text" class="form-control" id="email2" name="mobilenumber" value="<?php echo $row->MobileNumber;?>" required='true' maxlength='10'>
                                     </div>
-                                   
                                     <div class="form-group">
-                                        <label>Registration Date</label>
-                                         <input type="text" class="form-control" id="email2" name="" value="<?php  echo $row->RegDate;?>" readonly="true">
+                                        <label>Ngày đăng ký</label>
+                                        <input type="text" class="form-control" id="email2" name="" value="<?php echo $row->RegDate;?>" readonly="true">
                                     </div>
-                                    
-                                    
-                                     <?php $cnt=$cnt+1;}} ?>
+                                    <?php $cnt = $cnt + 1;}} ?>
                                     <br>
-                                    <button type="submit" class="btn btn-primary" name="submit">Update</button>
+                                    <button type="submit" class="btn btn-primary" name="submit">Cập nhật</button>
                                 </form>
                             </div>
                         </div>
                     </div>
-               
                 </div>
             </div>
         </div>
     </div>
+
 
 <!-- Core -->
 <script src="../assets/bundles/libscripts.bundle.js"></script>

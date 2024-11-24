@@ -41,28 +41,27 @@ echo '<script>alert("Your current password is wrong")</script>';
 <!doctype html>
 <html lang="en">
 <head>
-<title>Garbage Management System: Change Password</title>
+    <title>Hệ thống Quản lý Rác: Đổi Mật Khẩu</title>
 
-<link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
-<link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
 
-<link rel="stylesheet" href="../assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css">
-<link rel="stylesheet" href="../assets/vendor/parsleyjs/css/parsley.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css">
+    <link rel="stylesheet" href="../assets/vendor/parsleyjs/css/parsley.css">
 
-<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
-<script type="text/javascript">
-function checkpass()
-{
-if(document.changepassword.newpassword.value!=document.changepassword.confirmpassword.value)
-{
-alert('New Password and Confirm Password field does not match');
-document.changepassword.confirmpassword.focus();
-return false;
-}
-return true;
-}   
-
-</script>
+    <link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+    <script type="text/javascript">
+    function checkpass()
+    {
+        if(document.changepassword.newpassword.value != document.changepassword.confirmpassword.value)
+        {
+            alert('Mật khẩu mới và Mật khẩu xác nhận không khớp');
+            document.changepassword.confirmpassword.focus();
+            return false;
+        }
+        return true;
+    }   
+    </script>
 </head>
 <body class="theme-indigo">
     <?php include_once('includes/header.php');?>
@@ -70,48 +69,45 @@ return true;
     <div class="main_content" id="main-content">
        <?php include_once('includes/sidebar.php');?>
 
-      
-
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">Change Password</a>
-               
+                <a class="navbar-brand" href="javascript:void(0);">Đổi Mật Khẩu</a>
             </nav>
             <div class="container-fluid">
                 <div class="row clearfix">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Change Password</h2>
+                                <h2>Đổi Mật Khẩu</h2>
                             </div>
                             <div class="body">
-                                <form id="" method="post" onsubmit="return checkpass();" name="changepassword" novalidate >
+                                <form id="" method="post" onsubmit="return checkpass();" name="changepassword" novalidate>
                                     
                                     <div class="form-group">
-                                        <label>Current Password</label>
-                                        <input type="password" class="form-control" name="currentpassword" id="currentpassword"required='true'>
+                                        <label>Mật khẩu hiện tại</label>
+                                        <input type="password" class="form-control" name="currentpassword" id="currentpassword" required='true'>
                                     </div>
                                     <div class="form-group">
-                                        <label>New Password</label>
-                                       <input type="password" class="form-control" name="newpassword"  class="form-control" required="true">
-                                    <div class="form-group">
-                                        <label>Confirm Password</label>
-                                        <input type="password" class="form-control"  name="confirmpassword" id="confirmpassword"  required='true'>
+                                        <label>Mật khẩu mới</label>
+                                        <input type="password" class="form-control" name="newpassword" class="form-control" required="true">
                                     </div>
-                                    
-                                  
+                                    <div class="form-group">
+                                        <label>Xác nhận mật khẩu</label>
+                                        <input type="password" class="form-control" name="confirmpassword" id="confirmpassword" required='true'>
+                                    </div>
                                     
                                     <br>
-                                    <button type="submit" class="btn btn-primary" name="submit">Change</button>
+                                    <button type="submit" class="btn btn-primary" name="submit">Đổi</button>
                                 </form>
                             </div>
                         </div>
                     </div>
-               
                 </div>
             </div>
         </div>
     </div>
+
+
 
 <!-- Core -->
 <script src="../assets/bundles/libscripts.bundle.js"></script>

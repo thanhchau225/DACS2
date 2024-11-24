@@ -6,13 +6,11 @@ if (strlen($_SESSION['uuid']==0)) {
   header('location:logout.php');
   } else{
 
-
-
   ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-<title>Garbage Management System: Dashboard</title>
+<title>Hệ Thống Quản Lý Rác Thải: Bảng Điều Khiển</title>
 
 <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
 <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
@@ -29,11 +27,10 @@ if (strlen($_SESSION['uuid']==0)) {
 
     <?php include_once('includes/sidebar.php');?>
 
-    
 
     <div class="page">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="dashboard.php">Dashboard</a>
+            <a class="navbar-brand" href="dashboard.php">Bảng Điều Khiển</a>
         </nav>
         <div class="container-fluid">
             <div class="row clearfix">
@@ -53,9 +50,8 @@ foreach($results as $row)
 $email=$row->Email;   
 $fname=$row->FullName;     
 }   ?>
-                            <h4 style="color: red;"> Welcome to user Panel !! <?php  echo $fname ;?></h4>
                             
-                            <a href="profile.php" class="btn btn-primary"><small> View Profile</small></a>
+                            <a href="profile.php" class="btn btn-primary"><small> Xem Hồ Sơ</small></a>
                           
 <?php 
 $sql="SELECT tbluser.ID as uid from tbllodgedcomplain join tbluser on tbluser.ID=tbllodgedcomplain.UserID where tbllodgedcomplain.UserID=:uid";
@@ -69,9 +65,9 @@ $totallodgedcomplain=$query->rowCount();
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="card widget_2 big_icon traffic">
                         <div class="body" style="border:solid #000 1px">
-                                                        <h6>Total Lodged Complain</h6>
+                                                        <h6>Tổng Số Khiếu Nại Đã Nộp</h6>
                             <h2><?php echo $totallodgedcomplain;?></h2>
-                           <a href="lodged-complain-history.php"><small> View Detail</small></a>
+                           <a href="lodged-complain-history.php"><small> Xem Chi Tiết</small></a>
                         </div>
                     </div>
                 </div>
@@ -88,9 +84,9 @@ $newlodgedcomplain=$query->rowCount();
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="card widget_2 big_icon sales">
                         <div class="body" style="border:solid #ff0000 1px">
-                                                         <h6>New Lodged Complain</h6>
+                                                         <h6>Khiếu Nại Mới</h6>
                             <h2><?php echo $newlodgedcomplain;?></h2>
-                           <a href="lodged-complain-history.php"><small> View Detail</small></a>
+                           <a href="lodged-complain-history.php"><small> Xem Chi Tiết</small></a>
                         </div>
                     </div>
                 </div>
@@ -108,9 +104,9 @@ $completedlodgedcomplain=$query->rowCount();
                     <div class="card widget_2 big_icon email">
                         <div class="body" style="border:solid #009900 1px">
                                                       
-                             <h6>Completed Lodged Complain</h6>
+                             <h6>Khiếu Nại Hoàn Thành</h6>
                             <h2><?php echo $completedlodgedcomplain;?></h2>
-                           <a href="lodged-complain-history.php"><small> View Detail</small></a>
+                           <a href="lodged-complain-history.php"><small> Xem Chi Tiết</small></a>
                         </div>
                     </div>
                 </div>
@@ -121,9 +117,8 @@ $completedlodgedcomplain=$query->rowCount();
 
 
 
-
-
                           
+
                         </div>
                     </div>
                 </div>

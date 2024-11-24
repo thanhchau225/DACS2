@@ -10,11 +10,11 @@ if (strlen($_SESSION['vamsid']==0)) {
 
   ?>
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   
-    <title>Garbage Management System: Search Assign Lodged Complain</title>
+    <title>Hệ Thống Quản Lý Rác: Tìm Kiếm Khiếu Nại Được Giao</title>
 
     <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
@@ -31,29 +31,27 @@ if (strlen($_SESSION['vamsid']==0)) {
     <div class="main_content" id="main-content">
        <?php include_once('includes/sidebar.php');?>
 
-      
-
         <div class="page">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="javascript:void(0);">Search Assign Lodged Complain</a>
+                <a class="navbar-brand" href="javascript:void(0);">Tìm Kiếm Khiếu Nại Được Giao</a>
             </nav>
             <div class="container-fluid">            
                 <div class="row clearfix">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Search Assign Lodged Complain </h2>
+                                <h2>Tìm Kiếm Khiếu Nại Được Giao</h2>
                             </div>
                             <div class="body">
 
                                 <form id="basic-form" method="post">
                                 <div class="form-group">
                                    
-                                    <input id="searchdata" type="text" name="searchdata" required="true" class="form-control" placeholder="Enter Complain Number"></div>
-                                
+                                    <input id="searchdata" type="text" name="searchdata" required="true" class="form-control" placeholder="Nhập Số Khiếu Nại"></div>
+                                 
                                 <br>
-                                <button type="submit" class="btn btn-primary" name="search" id="submit">Search</button>
-                                
+                                <button type="submit" class="btn btn-primary" name="search" id="submit">Tìm Kiếm</button>
+                                 
                             </form>
                             <br>
                                 <div class="table-responsive">
@@ -63,28 +61,28 @@ if(isset($_POST['search']))
 
 $sdata=$_POST['searchdata'];
   ?>
-  <h4 align="center">Result against "<?php echo $sdata;?>" keyword </h4>
+  <h4 align="center">Kết quả tìm kiếm với từ khóa "<?php echo $sdata;?>" </h4>
                                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                         <thead>
                                             <tr>
-                                               <th>S.No</th>
-                                        <th>Complain Number</th>
-                                        <th>Name</th>
-                                        <th>Mobile Number</th>
+                                               <th>STT</th>
+                                        <th>Số Khiếu Nại</th>
+                                        <th>Họ Tên</th>
+                                        <th>Số Điện Thoại</th>
                                         <th>Email</th>
-                                    <th>Status</th>
-                                        <th>Action</th>
+                                    <th>Tình Trạng</th>
+                                        <th>Hành Động</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                               <th>S.No</th>
-                                        <th>Complain Number</th>
-                                        <th>Name</th>
-                                        <th>Mobile Number</th>
+                                               <th>STT</th>
+                                        <th>Số Khiếu Nại</th>
+                                        <th>Họ Tên</th>
+                                        <th>Số Điện Thoại</th>
                                         <th>Email</th>
-                                    <th>Status</th>
-                                        <th>Action</th>
+                                    <th>Tình Trạng</th>
+                                        <th>Hành Động</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -109,18 +107,18 @@ foreach($results as $row)
                                         <td><?php  echo htmlentities($row->Email);?></td>
                                              <?php if($row->Status==""){ ?>
 
-                     <td><?php echo "Not Updated Yet"; ?></td>
-<?php } else { ?>                  <td><?php  echo htmlentities($row->Status);?> (Assign to <?php  echo htmlentities($row->AssignTo);?>)
+                     <td><?php echo "Chưa Cập Nhật"; ?></td>
+<?php } else { ?>                  <td><?php  echo htmlentities($row->Status);?> (Giao cho <?php  echo htmlentities($row->AssignTo);?>)
                   </td>
                   <?php } ?>         
                  
-                                        <td><a href="view-complain-detail.php?editid=<?php echo htmlentities ($row->compid);?>&&comid=<?php echo htmlentities ($row->ComplainNumber);?>" class="btn btn-primary">View</a></td>
+                                        <td><a href="view-complain-detail.php?editid=<?php echo htmlentities ($row->compid);?>&&comid=<?php echo htmlentities ($row->ComplainNumber);?>" class="btn btn-primary">Xem</a></td>
                                             </tr>
                                          <?php 
 $cnt=$cnt+1;
 } } else { ?>
   <tr>
-    <td colspan="8"> No record found against this search</td>
+    <td colspan="8"> Không tìm thấy kết quả cho từ khóa này</td>
 
   </tr>
   <?php } }?> 
@@ -135,6 +133,8 @@ $cnt=$cnt+1;
             </div>
         </div>
     </div>
+
+
 
 
 <!-- Jquery Core Js --> 
